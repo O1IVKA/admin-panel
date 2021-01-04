@@ -7,7 +7,6 @@ from .models import Article
 from django.shortcuts import render
 
 
-
 def wrapper(fn):
     """wrapper function for simple functions"""
 
@@ -63,5 +62,3 @@ class ArticleUpdate(LoginRequiredMixin, UpdateView):
         if not self.request.user == kwargs['instance'].author:
             return self.handle_no_permission()
         return kwargs
-
-

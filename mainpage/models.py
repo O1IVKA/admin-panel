@@ -4,13 +4,6 @@ from django.urls import reverse
 from users.models import Userc
 
 
-class Tag(models.Model):
-    """model for tags """
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
 
 class Article(models.Model):
     """model for posts"""
@@ -25,7 +18,6 @@ class Article(models.Model):
     slug = models.SlugField(default=None, max_length=160, unique=True)
     likes = models.ManyToManyField(Userc, default=None, blank=True)
     img = models.ImageField(upload_to='pm', null=True)
-    tags = models.ManyToManyField(Tag, related_name='tags', verbose_name='Теги')
 
     def total_likes(self):
         return self.likes.count()

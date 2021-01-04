@@ -1,10 +1,8 @@
-
 from django.contrib import admin
 from django.urls import path, include
 from . import settings
 from django.contrib.staticfiles.urls import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic import ListView, DetailView
+
 
 urlpatterns = [
     path('', include('mainpage.urls')),

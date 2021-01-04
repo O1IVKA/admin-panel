@@ -14,16 +14,16 @@ class LogIn(LoginView):
 
 class LogOut(LogoutView):
     """view for logging out"""
-    next_page = '/'
+    success_url = reverse_lazy('create')
 
 
 class Reg(CreateView):
     """view for registration"""
     model = Userc
     template_name = 'reg.html'
-    success_url = reverse_lazy('create')
-    success_msg = 'Пользователь создан'
     form_class = ProfileCreateChange
+    success_url = reverse_lazy('create')
+
 
     def form_valid(self, form):
         form_valid = super().form_valid(form)
