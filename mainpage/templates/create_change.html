@@ -1,19 +1,5 @@
 {% include 'wrapper.html' %}
-{%load templatetags%}
-{%get_context_of_news_lenta as  lenta%}
 
-	<!-- Latest news section -->
-	<div class="latest-news-section">
-		<div class="ln-title">Последние новости</div>
-		<div class="news-ticker">
-			<div class="news-ticker-contant">
-				{%for post in lenta%}
-				<a class="nt-item" href="{{post.get_absolute_url}}">{{post.title}}</a>
-				{%endfor%}
-			</div>
-		</div>
-	</div>
-	<!-- Latest news section end -->
 <!-- Modal -->
 <div class="create_post">
   <div class="modal-dialog">
