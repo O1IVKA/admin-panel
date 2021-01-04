@@ -1,0 +1,34 @@
+{% include 'wrapper.html' %}
+{%load templatetags%}
+
+	<!-- Latest news section -->
+	<div class="latest-news-section">
+		<div class="ln-title">Последние новости</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+								{%get_context_of_news_lenta as  lenta%}
+				{%for post in lenta%}
+				<a class="nt-item" href="{{post.get_absolute_url}}">{{post.title}}</a>
+				{%endfor%}
+			</div>
+		</div>
+	</div>
+	<!-- Latest news section end -->
+<div class="ttl">
+<h2>Регистация</h2>
+<form method="post" enctype="multipart/form-data">
+	{%csrf_token%}
+	<div >Имя пользователя:</div>
+	{{form.username}}
+	<div >Пароль:</div>
+	{{form.password}}
+	<div >Почта:</div>
+	{{form.email}}
+	<div >Почта:</div>
+	{{form.profile_img}}
+	<input type="hidden" name="next" value='{% url "index" %}'>
+	<div style="margin-top:1%"><input class="btn" type="submit" value="Зарегестрироватся"></div>
+</form>
+</div>
+
+		{% include 'footer.html' %}

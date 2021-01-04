@@ -1,0 +1,91 @@
+{% include 'wrapper.html' %}
+{%load templatetags%}
+{%get_context_of_news_lenta as  lenta%}
+
+	<!-- Latest news section -->
+	<div class="latest-news-section">
+		<div class="ln-title">Последние новости</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+				{%for post in lenta%}
+				<a class="nt-item" href="{{post.get_absolute_url}}">{{post.title}}</a>
+				{%endfor%}
+			</div>
+		</div>
+	</div>
+	<!-- Latest news section end -->
+<!-- Modal -->
+<div class="create_post">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                    {% if update%}
+	<h3>Редактировать статью</h3>
+        </div>
+{% else %}
+	<h3>Создать статью</h3>
+        {%endif%}
+	<form  method="post" style="margin:1%" enctype="multipart/form-data">
+		{%csrf_token%}
+        <div>Название статьи</div>
+        <div>{{form.title}}</div>
+        <div>Текст</div>
+        <div>{{form.content}}</div>
+        <div style="	font-weight: bold;">Отметьте где розместить пост:</div>
+
+        <div>Введите уникальную ссылку для статьи</div>
+        <div>{{form.slug}}</div>
+        <div>Загрузите фото</div>
+        <div>{{ form.img }}</div>
+        <div>
+        <button type="button"style="margin:1%"  class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+          {% if update%}
+        <button type="submit" style="margin:1%" class="btn btn-primary">Редактировать статью</button>
+        </div>
+        {% else %}
+        <button type="submit" style="margin:1%" class="btn btn-primary">Добавить статью</button>
+        </div>
+
+        {%endif%}
+	</form>
+	  </div>
+    </div>
+  </div>
+</div>
+
+{% if available%}
+{% if not update%}
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Дата создания</th>
+      <th scope="col">Название</th>
+      <th scope="col">Редактировать</th>
+      <th scope="col">Удалить</th>
+
+    </tr>
+  </thead>
+		{%for simple in available%}
+  <tbody>
+    <tr>
+      <th scope="row">{{simple.id}}</th>
+      <td>{{simple.date}}</td>
+		      <td>{{simple.title}}</td>
+        <td><a href='{% url "edit" simple.slug %}' ><button class="btn">Редактирвать</button></a></td>
+		<form method="post" action='{% url "delete"  simple.slug %}'>
+			{%csrf_token%}
+			<td><a><button type="submit" class="btn" >Удалить</button></a></td>
+		</form>
+    </tr>
+  </tbody>
+	{%endfor%}
+</table>
+{%endif%}
+{%endif%}
+		{% include 'footer.html' %}

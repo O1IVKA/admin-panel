@@ -1,0 +1,53 @@
+{%load templatetags%}
+
+
+{% include 'wrapper.html' %}
+
+<section class="edit-profile">
+    <div class="container">
+        <div class="section-header">
+            <h2>Изменения профиля</h2>
+        </div>
+        <div class="row">
+            <div class="col-4 text-center">
+                <div class="edit-profile-img">
+                    <img src="../static/img/features/2.jpg" alt="edit-profile-img">
+                    <button class="edit-profile-change-img">
+                        <img class="img-bg-test" src="../static/img/icons/camera.svg" alt="camera">
+                        <span>Изменить</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6">
+                <div class="edit-form-block">
+                    <form action="#" class="edit-form">
+                        <label for="edit-profile-name">Имя</label>
+                        <input class="edit-profile-input" value="Иван" type="text" id="edit-profile-name">
+                        <label for="edit-profile-email">E-mail</label>
+                        <input class="edit-profile-input" type="text" value="ivan@mail.ru" id="edit-profile-email">
+                        <label for="edit-profile-phone">Номер телефона</label>
+                        <input class="edit-profile-input" type="text" value="+789792487131" id="edit-profile-phone">
+                        <label for="edit-profile-lang">Язык</label>
+                        <select class="edit-profile-select" name="lang" id="edit-profile-lang">
+                            <option value="Русский">Русский</option>
+                            <option value="Английский">Английский</option>
+                        </select>
+                        <h4 class="edit-profile-pass text-center">Изменение пароля</h4>
+                        <label for="">Старый пароль</label>
+                        <input class="edit-profile-input" type="text">
+                        <label for="">Новый пароль</label>
+                        <input class="edit-profile-input" type="text">
+                        <label for="">Повторите новый пароль</label>
+                        <input class="edit-profile-input" type="text">
+
+                        <button type="submit" class="edit-profile-btn">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
