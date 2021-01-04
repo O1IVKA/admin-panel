@@ -1,0 +1,1 @@
+For using panel, you have to make 'migrations' then 'migrate'
