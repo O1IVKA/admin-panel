@@ -128,3 +128,5 @@ CKEDITOR_CONFIGS = {
         'language': 'uk',
     },
 }
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'create'
