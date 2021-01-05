@@ -22,7 +22,7 @@ class ArticleCreate(LoginRequiredMixin, CreateView):
     model = Article
     template_name = 'create_change.html'
     form_class = AddPost
-
+    success_url = reverse_lazy('create')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['available'] = Article.objects.filter(author=self.request.user).order_by('-date')

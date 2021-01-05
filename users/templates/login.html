@@ -1,18 +1,6 @@
 {% include 'wrapper.html' %}
-{%load templatetags%}
 
-	<!-- Latest news section -->
-	<div class="latest-news-section">
-		<div class="ln-title">Последние новости</div>
-		<div class="news-ticker">
-			<div class="news-ticker-contant">
-								{%get_context_of_news_lenta as  lenta%}
-				{%for post in lenta%}
-				<a class="nt-item" href="{{post.get_absolute_url}}">{{post.title}}</a>
-				{%endfor%}
-			</div>
-		</div>
-	</div>
+
 <div class="ttl">
 <h2>Вход</h2>
 <form method="post">

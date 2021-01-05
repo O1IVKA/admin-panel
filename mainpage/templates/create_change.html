@@ -63,10 +63,10 @@
       <th scope="row">{{simple.id}}</th>
       <td>{{simple.date}}</td>
 		      <td>{{simple.title}}</td>
-        <td><a href='{% url "edit" simple.slug %}' ><button class="btn">Редактирвать</button></a></td>
+        <td><a href='{% url "edit" simple.slug %}' ><button class="btn" style="color:white">Редактирвать</button></a></td>
 		<form method="post" action='{% url "delete"  simple.slug %}'>
 			{%csrf_token%}
-			<td><a><button type="submit" class="btn" >Удалить</button></a></td>
+			<td><a><button type="submit" class="btn" style="color:white">Удалить</button></a></td>
 		</form>
     </tr>
   </tbody>
